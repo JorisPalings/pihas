@@ -3,6 +3,15 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const stt = require('watson-developer-cloud/speech-to-text/v1');
 const opn = require('opn');
+const clapDetector = require('clap-detector');
+
+
+// Start clap detection
+clapDetector.start();
+
+clapDetector.onClaps(3, 2000, function(delay) {
+  console.log('Double clap!');
+});
 
 const port = 3000;
 
