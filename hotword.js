@@ -26,7 +26,7 @@ detector.on('error', error => {
 });
 
 detector.on('hotword', (index, hotword, buffer) => {
-  console.log('Hotword #' + index + 'detected: ' + hotword);
+  console.log('Hotword #' + index + ' detected. ("' + hotword + '")');
 });
 
 module.exports.detector = detector;

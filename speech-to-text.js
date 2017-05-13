@@ -13,7 +13,7 @@ const speechToTextService = new stt({
 
 var transcribe = function() {
   fs.createReadStream('./speech.wav')
-  .pipe(speechToTextService.createRecognizeStream({ content_type: 'audio/l16; rate=16000' }))
+  .pipe(speechToTextService.createRecognizeStream({ content_type: 'audio/l16; rate=44100' }))
   .pipe(fs.createWriteStream('./transcription.txt'));
 }
 
