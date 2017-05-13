@@ -23,7 +23,7 @@ var transcribe = () => {
 
 speechStream.on('data', (data) => {
   console.log('Data entered speechStream');
-  transcribe;
+  transcribe();
 });
 
 module.exports.speechStream = speechStream;
