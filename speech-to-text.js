@@ -7,7 +7,7 @@ const stream = require('stream');
 // Configuration module
 const config = require('./config');
 
-var speechStream = new stream.Duplex();
+var speechStream = new stream.PassThrough();
 
 const speechToTextService = new stt({
   username: config.speechToTextUsername,
