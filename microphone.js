@@ -3,7 +3,7 @@ const mic = require('mic');
 const fs = require('fs');
 
 var micInstance = mic({
-  'rate': '44100',
+  'rate': '16000',
   'channels': '1',
   'debug': true
 });
