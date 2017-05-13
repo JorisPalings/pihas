@@ -6,8 +6,9 @@ const bodyParser = require('body-parser');
 const request = require('request');
 // Configuration module
 const config = require('./config');
-
 // Proprietary modules
+const microphone = require('./microphone');
+const hotword = require('./hotword');
 const music = require('./music');
 const speechToText = require('./speech-to-text');
 
@@ -60,6 +61,9 @@ app.get('/search', function(req, res) {
     res.status(500).end();
   }
 });
+
+microphone.record();
+microphone.inputStream.pipe(hotword.detector);
 
 app.listen(config.port, function() {
   console.log('Server listening');
