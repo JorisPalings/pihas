@@ -12,6 +12,7 @@ var micInputStream = micInstance.getAudioStream();
 
 micInputStream.on('data', data => {
   logUpdate('Receiving data...');
+  logUpdate.clear();
 });
 
 micInputStream.on('error', error => {
@@ -36,6 +37,7 @@ micInputStream.on('resumeComplete', () => {
 
 micInputStream.on('silence', () => {
   logUpdate('Receiving silence...');
+  logUpdate.clear();
 });
 
 micInputStream.on('processExitComplete', () => {
