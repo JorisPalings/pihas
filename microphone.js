@@ -1,6 +1,7 @@
 // External modules
 const mic = require('mic');
 const fs = require('fs');
+const logUpdate = require('log-update');
 
 var micInstance = mic({
   'rate': '16000',
@@ -10,7 +11,7 @@ var micInstance = mic({
 var micInputStream = micInstance.getAudioStream();
 
 micInputStream.on('data', data => {
-  console.log('Received input stream: ', data.length);
+  logUpdate('Receiving data...');
 });
 
 micInputStream.on('error', error => {
@@ -18,27 +19,27 @@ micInputStream.on('error', error => {
 });
 
 micInputStream.on('startComplete', () => {
-  console.log('Got SIGNAL startComplete');
+  console.log('Recording started.');
 });
 
 micInputStream.on('stopComplete', () => {
-  console.log('Got SIGNAL stopComplete');
+  console.log('Recording stopped.');
 });
 
 micInputStream.on('pauseComplete', () => {
-  console.log('Got SIGNAL pauseComplete');
+  console.log('Recording paused');
 });
 
 micInputStream.on('resumeComplete', () => {
-  console.log('Got SIGNAL resumeComplete');
+  console.log('Recording resumed.');
 });
 
 micInputStream.on('silence', () => {
-  console.log('Got SIGNAL silence');
+  logUpdate('Receiving silence...');
 });
 
 micInputStream.on('processExitComplete', () => {
-  console.log('Got SIGNAL processExitComplete');
+  console.log('Recording process exited.');
 });
 
 var record = micInstance.start();
