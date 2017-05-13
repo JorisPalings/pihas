@@ -14,13 +14,15 @@ const speechToTextService = new stt({
   password: config.speechToTextPassword
 });
 
-var transcribe = function() {
+var transcribe = () => {
+  console.log('Entered transcribe');
   speechStream
   .pipe(speechToTextService.createRecognizeStream({ content_type: 'audio/l16; rate=16000' }))
   .pipe(fs.createWriteStream('./transcription.txt'));
 }
 
 speechStream.on('data', (data) => {
+  console.log('Data entered speechStream');
   transcribe;
 });
 
