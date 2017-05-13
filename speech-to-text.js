@@ -13,17 +13,30 @@ const speechToTextService = new stt({
   username: config.speechToTextUsername,
   password: config.speechToTextPassword
 });
+var recognizeStream = speechToTextService.createRecognizeStream({ content_type: 'audio/l16; rate=16000' });
 
 var transcribe = () => {
   console.log('Entered transcribe');
   speechStream
-  .pipe(speechToTextService.createRecognizeStream({ content_type: 'audio/l16; rate=16000' }))
+  .pipe(recognizeStream)
   .pipe(fs.createWriteStream('./transcription.txt'));
 }
 
 speechStream.on('data', (data) => {
   console.log('Data entered speechStream');
   transcribe();
+});
+
+speechStream.on('error', (error) => {
+  console.log('Error in speechStream: ', error);
+});
+
+recognizeStream.on('data', (data) => {
+  console.log('Data left recognizeStream');
+}):
+
+recognizeStream.on('error', (error) => {
+  console.log('Error in recognizeStream: ', error);
 });
 
 module.exports.speechStream = speechStream;
