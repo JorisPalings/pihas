@@ -9,44 +9,35 @@ var micInstance = mic({
 });
 var micInputStream = micInstance.getAudioStream();
 
-micInputStream.on('data', function(data) {
-  console.log('Recieved Input Stream: ' + data.length);
+micInputStream.on('data', data => {
+  console.log('Received input stream: ', data.length);
 });
 
-micInputStream.on('error', function(err) {
-  cosole.log('Error in Input Stream: ' + err);
+micInputStream.on('error', error => {
+  console.log('Error in input stream: ', error);
 });
 
-micInputStream.on('startComplete', function() {
+micInputStream.on('startComplete', () => {
   console.log('Got SIGNAL startComplete');
-  setTimeout(function() {
-    micInstance.pause();
-  }, 5000);
 });
 
-micInputStream.on('stopComplete', function() {
+micInputStream.on('stopComplete', () => {
   console.log('Got SIGNAL stopComplete');
 });
 
-micInputStream.on('pauseComplete', function() {
+micInputStream.on('pauseComplete', () => {
   console.log('Got SIGNAL pauseComplete');
-  setTimeout(function() {
-    micInstance.resume();
-  }, 5000);
 });
 
-micInputStream.on('resumeComplete', function() {
+micInputStream.on('resumeComplete', () => {
   console.log('Got SIGNAL resumeComplete');
-  setTimeout(function() {
-    micInstance.stop();
-  }, 5000);
 });
 
-micInputStream.on('silence', function() {
+micInputStream.on('silence', () => {
   console.log('Got SIGNAL silence');
 });
 
-micInputStream.on('processExitComplete', function() {
+micInputStream.on('processExitComplete', () => {
   console.log('Got SIGNAL processExitComplete');
 });
 
