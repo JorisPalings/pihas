@@ -66,5 +66,5 @@ microphone.record;
 microphone.inputStream.pipe(hotword.detector);
 
 app.listen(config.port, function() {
-  console.log('Server listening');
+  console.log('Server listening on port ' + config.port);
 });
