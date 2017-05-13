@@ -3,16 +3,9 @@ const mic = require('mic');
 const fs = require('fs');
 const events = require('events');
 
-// Custom EventEmitter to switch between stream outputs
-var micEmitter = new events.EventEmitter();
-
-micEmitter.on('hotword', () => {
-  console.log('Hotword event detected');
-});
-
-micEmitter.on('error', () => {
-  console.log('Error in MicEmitter: ', error);
-});
+// Proprietary modules
+const hotword = require('./hotword');
+const speechToText = require('./speech-to-text');
 
 var micInstance = mic({
   'rate': '16000',
@@ -57,8 +50,30 @@ micInputStream.on('processExitComplete', () => {
 
 */
 
-var record = micInstance.start();
+// Custom EventEmitter to switch between stream outputs
+var micEmitter = new events.EventEmitter();
+
+micEmitter.on('hotword', () => {
+  console.log('Hotword event detected');
+  switchOutputStream(speechToText.speechStream);
+});
+
+micEmitter.on('error', () => {
+  console.log('Error in MicEmitter: ', error);
+});
+
+var startRecording = () => {
+  micInstance.start();
+  micInputStream.pipe(hotword.detector)
+}
+
+var switchOutputStream = (destination) => {
+  micInputStream.pause();
+  micInputStream.unpipe();
+  micInputStream.pipe(destination);
+  micInputStream.resume();
+}
 
 module.exports.micEmitter = micEmitter;
-module.exports.record = record;
+module.exports.startRecording = startRecording;
 module.exports.inputStream = micInputStream;

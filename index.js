@@ -62,8 +62,7 @@ app.get('/search', function(req, res) {
   }
 });
 
-microphone.record;
-microphone.inputStream.pipe(hotword.detector);
+microphone.startRecording;
 
 app.listen(config.port, function() {
   console.log('Server listening on port ' + config.port);
