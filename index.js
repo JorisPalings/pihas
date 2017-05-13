@@ -62,7 +62,7 @@ app.get('/search', function(req, res) {
   }
 });
 
-microphone.record();
+microphone.record;
 microphone.inputStream.pipe(hotword.detector);
 
 app.listen(config.port, function() {
