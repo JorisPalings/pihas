@@ -4,8 +4,7 @@ const fs = require('fs');
 
 var micInstance = mic({
   'rate': '16000',
-  'channels': '1',
-  'debug': true
+  'channels': '1'
 });
 var micInputStream = micInstance.getAudioStream();
 
