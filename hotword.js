@@ -6,9 +6,9 @@ const { Detector, Models } = require('snowboy');
 const models = new Models();
 
 models.add({
-  file: 'resources/hipi.pmdl',
+  file: 'resources/Magically.pmdl',
   sensitivity: '0.5',
-  hotwords : 'hi pi'
+  hotwords : 'Magically'
 });
 
 const detector = new Detector({
@@ -21,7 +21,7 @@ detector.on('silence', function() {
   console.log('silence');
 });
 
-detector.on('sound', function(buffer) { // Buffer arguments contains sound that triggered the event, for example, it could be written to a wav stream
+detector.on('sound', function(buffer) {
   console.log('sound');
 });
 
@@ -29,7 +29,7 @@ detector.on('error', function () {
   console.log('error');
 });
 
-detector.on('hotword', function(index, hotword, buffer) { // Buffer arguments contains sound that triggered the event, for example, it could be written to a wav stream
+detector.on('hotword', function(index, hotword, buffer) {
   console.log('hotword', index, hotword);
 });
 
