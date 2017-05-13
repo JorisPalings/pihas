@@ -9,20 +9,19 @@ var micInstance = mic({
 });
 var micInputStream = micInstance.getAudioStream();
 
-micInputStream.on('data', data => {
-  logUpdate('Receiving data...');
-  logUpdate.clear();
+micInputStream.on('startComplete', () => {
+  console.log('Recording started.');
 });
-
-/*
-  Event handling
 
 micInputStream.on('error', error => {
   console.log('Error in input stream: ', error);
 });
 
-micInputStream.on('startComplete', () => {
-  console.log('Recording started.');
+/*
+  Event handling
+
+micInputStream.on('data', data => {
+  console.log('Receiving data...');
 });
 
 micInputStream.on('stopComplete', () => {
@@ -38,8 +37,7 @@ micInputStream.on('resumeComplete', () => {
 });
 
 micInputStream.on('silence', () => {
-  logUpdate('Receiving silence...');
-  logUpdate.clear();
+  console.log('Receiving silence...');
 });
 
 micInputStream.on('processExitComplete', () => {
