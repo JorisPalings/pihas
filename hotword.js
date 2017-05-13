@@ -2,6 +2,8 @@
 
 // External module
 const { Detector, Models } = require('snowboy');
+// Proprietary module
+const microphone = require('microphone');
 
 const models = new Models();
 
@@ -27,6 +29,7 @@ detector.on('error', error => {
 
 detector.on('hotword', (index, hotword, buffer) => {
   console.log('Hotword #' + index + ' detected. ("' + hotword + '")');
+  microphone.micEmitter.emit('hotword');
 });
 
 module.exports.detector = detector;
