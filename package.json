@@ -9,11 +9,10 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
-    "mic": "https://github.com/ashishbajaj99/mic.git",
-    "opn": "https://github.com/sindresorhus/opn.git",
+    "mic": "^2.1.1",
+    "opn": "^5.0.0",
     "request": "^2.81.0",
-    "snowboy": "https://github.com/Kitt-AI/snowboy.git",
-    "watson-developer-cloud": "https://github.com/watson-developer-cloud/node-sdk.git"
+    "watson-developer-cloud": "^2.31.1"
   },
   "devDependencies": {},
   "repository": {
