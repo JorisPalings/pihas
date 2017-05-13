@@ -33,7 +33,7 @@ speechStream.on('error', (error) => {
 
 recognizeStream.on('data', (data) => {
   console.log('Data left recognizeStream');
-}):
+});
 
 recognizeStream.on('error', (error) => {
   console.log('Error in recognizeStream: ', error);
