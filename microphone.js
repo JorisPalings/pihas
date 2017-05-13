@@ -62,13 +62,13 @@ micEmitter.on('error', () => {
   console.log('Error in MicEmitter: ', error);
 });
 
-var startRecording = () => {
+function startRecording() {
   console.log('Entered startRecording');
   micInstance.start();
   micInputStream.pipe(hotword.detector)
 }
 
-var switchOutputStream = (destination) => {
+function switchOutputStream(destination) {
   console.log('Entered switchOutputStream');
   micInputStream.pause();
   micInputStream.unpipe();
@@ -77,5 +77,5 @@ var switchOutputStream = (destination) => {
 }
 
 module.exports.micEmitter = micEmitter;
-module.exports.startRecording = startRecording;
+module.exports.startRecording() = startRecording();
 module.exports.inputStream = micInputStream;

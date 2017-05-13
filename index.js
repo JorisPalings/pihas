@@ -62,7 +62,7 @@ app.get('/search', function(req, res) {
   }
 });
 
-microphone.startRecording;
+microphone.startRecording();
 
 app.listen(config.port, function() {
   console.log('Server listening on port ' + config.port);
