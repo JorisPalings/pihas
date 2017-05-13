@@ -1,7 +1,6 @@
 // External modules
 const mic = require('mic');
 const fs = require('fs');
-const logUpdate = require('log-update');
 
 var micInstance = mic({
   'rate': '16000',
@@ -14,6 +13,9 @@ micInputStream.on('data', data => {
   logUpdate('Receiving data...');
   logUpdate.clear();
 });
+
+/*
+  Event handling
 
 micInputStream.on('error', error => {
   console.log('Error in input stream: ', error);
@@ -43,6 +45,8 @@ micInputStream.on('silence', () => {
 micInputStream.on('processExitComplete', () => {
   console.log('Recording process exited.');
 });
+
+*/
 
 var record = micInstance.start();
 

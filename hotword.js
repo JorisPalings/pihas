@@ -17,20 +17,16 @@ const detector = new Detector({
   audioGain: 1.0
 });
 
-detector.on('silence', function() {
-  console.log('silence');
+detector.on('silence', () => { /* Event handling */});
+
+detector.on('sound', buffer => { /* Event handling */});
+
+detector.on('error', error => {
+  console.error('Error: ', error);
 });
 
-detector.on('sound', function(buffer) {
-  console.log('sound');
-});
-
-detector.on('error', function () {
-  console.log('error');
-});
-
-detector.on('hotword', function(index, hotword, buffer) {
-  console.log('hotword', index, hotword);
+detector.on('hotword', (index, hotword, buffer) => {
+  console.log('Hotword #' + index + 'detected: ' + hotword);
 });
 
 module.exports.detector = detector;
