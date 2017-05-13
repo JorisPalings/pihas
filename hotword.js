@@ -3,7 +3,7 @@
 // External module
 const { Detector, Models } = require('snowboy');
 // Proprietary module
-const microphone = require('microphone');
+const microphone = require('./microphone');
 
 const models = new Models();
 
