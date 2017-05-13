@@ -1,7 +1,7 @@
 {
   "name": "bb-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Raspberry Pi Home Automation System",
   "main": "index.js",
   "scripts": {},
   "author": "Joris Palings",
@@ -14,5 +14,14 @@
     "request": "^2.81.0",
     "snowboy": "^1.1.0",
     "watson-developer-cloud": "^2.30.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JorisPalings/pihas-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JorisPalings/pihas-api/issues"
+  },
+  "homepage": "https://github.com/JorisPalings/pihas-api#readme"
 }
