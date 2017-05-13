@@ -23,7 +23,7 @@ sudo nano config.js
 ```
 
 5. Add your own [Watson Speech-to-Text API](https://www.ibm.com/watson/developercloud/speech-to-text.html "Watson Speech-to-Text API") and [Spotify API](https://developer.spotify.com/web-api/ "Spotify API") credentials
-```json
+```js
 'use strict';
 
 const config = new function() {
