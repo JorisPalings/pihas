@@ -65,15 +65,20 @@ micEmitter.on('error', () => {
 var startRecording = () => {
   console.log('Entered startRecording');
   micInstance.start();
+  console.log('Started recording');
   micInputStream.pipe(hotword.detector)
 }
 
 var switchOutputStream = (destination) => {
   console.log('Entered switchOutputStream');
   micInputStream.pause();
+  console.log('Microphone input stream paused');
   micInputStream.unpipe();
+  console.log('Microphone input stream detached from hotword detector');
   micInputStream.pipe(destination);
+  console.log('Microphone input stream attached to Speech-to-Text');
   micInputStream.resume();
+  console.log('Microphone input stream resumed');
 }
 
 module.exports.micEmitter = micEmitter;
