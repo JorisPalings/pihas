@@ -28,6 +28,18 @@ var speechToTextParameters = {
 
 var createRecognizeStream = () => {
   recognizeStream = speechToTextService.createRecognizeStream(speechToTextParameters);
+
+  recognizeStream.on('data', (data) => {
+    console.log('Data left recognizeStream');
+  });
+
+  recognizeStream.on('error', (error) => {
+    console.log('Error in recognizeStream: ', error);
+  });
+
+  recognizeStream.on('close', (error) => {
+    console.log('Closed recognizeStream');
+  });
 }
 
 var transcribe = () => {
@@ -44,19 +56,6 @@ speechStream.on('data', (data) => {
 
 speechStream.on('error', (error) => {
   console.log('Error in speechStream: ', error);
-});
-
-recognizeStream.on('data', (data) => {
-  console.log('Data left recognizeStream');
-});
-
-recognizeStream.on('error', (error) => {
-  console.log('Error in recognizeStream: ', error);
-});
-
-
-recognizeStream.on('close', (error) => {
-  console.log('Closed recognizeStream');
 });
 
 module.exports.createRecognizeStream = createRecognizeStream;
