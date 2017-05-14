@@ -27,7 +27,9 @@ var speechToTextParameters = {
 }
 
 var createRecognizeStream = () => {
+  console.log('Initializing recognizeStream');
   recognizeStream = speechToTextService.createRecognizeStream(speechToTextParameters);
+  console.log('Initialized recognizeStream');
 
   recognizeStream.on('data', (data) => {
     console.log('Data left recognizeStream');
