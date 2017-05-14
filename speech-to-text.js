@@ -40,6 +40,7 @@ var createRecognizeStream = () => {
   recognizeStream.on('close', (error) => {
     console.log('Closed recognizeStream');
   });
+  // Feedback 2
 }
 
 var transcribe = () => {

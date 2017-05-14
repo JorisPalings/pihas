@@ -29,6 +29,7 @@ detector.on('error', error => {
 
 detector.on('hotword', (index, hotword, buffer) => {
   console.log('Hotword #' + index + ' detected. ("' + hotword + '")');
+  // Feedback 1
   microphone.micEmitter.emit('hotword');
 });
 
