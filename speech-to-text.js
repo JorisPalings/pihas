@@ -26,7 +26,7 @@ var speechToTextParameters = {
   'profanity_filter': false
 }
 
-function createRecognizeStream = () => {
+var createRecognizeStream = () => {
   recognizeStream = speechToTextService.createRecognizeStream(speechToTextParameters);
 }
 
