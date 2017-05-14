@@ -21,7 +21,7 @@ var speechToTextParameters = {
   'word_confidence': false,
   'timestamps': false,
   'keywords': ['spotify', 'play', 'stop', 'pause', 'resume', 'track', 'album', 'artist', 'playlist', 'lyrics'],
-  'keywords_threshold': 0.5
+  'keywords_threshold': 0.5,
   'profanity_filter': false
 }
 var recognizeStream = speechToTextService.createRecognizeStream(speechToTextParameters);
