@@ -13,7 +13,18 @@ const speechToTextService = new stt({
   username: config.speechToTextUsername,
   password: config.speechToTextPassword
 });
-var recognizeStream = speechToTextService.createRecognizeStream({ content_type: 'audio/l16; rate=16000' });
+var speechToTextParameters = {
+  'content_type': 'audio/l16; rate=16000',
+  'inactivity_timeout': 5,
+  'interim_results': false,
+  'max_alternatives': 1,
+  'word_confidence': false,
+  'timestamps': false,
+  'keywords': ['spotify', 'play', 'stop', 'pause', 'resume', 'track', 'album', 'artist', 'playlist', 'lyrics'],
+  'keywords_threshold': 0.5
+  'profanity_filter': false
+}
+var recognizeStream = speechToTextService.createRecognizeStream(speechToTextParameters);
 
 var transcribe = () => {
   console.log('Entered transcribe');
