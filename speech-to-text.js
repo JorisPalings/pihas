@@ -7,6 +7,7 @@ const stream = require('stream');
 // Configuration module
 const config = require('./config');
 
+var recognizeStream;
 var speechStream = new stream.PassThrough();
 
 const speechToTextService = new stt({
@@ -24,7 +25,10 @@ var speechToTextParameters = {
   'keywords_threshold': 0.5,
   'profanity_filter': false
 }
-var recognizeStream = speechToTextService.createRecognizeStream(speechToTextParameters);
+
+function createRecognizeStream = () => {
+  recognizeStream = speechToTextService.createRecognizeStream(speechToTextParameters);
+}
 
 var transcribe = () => {
   console.log('Entered transcribe');
@@ -50,5 +54,11 @@ recognizeStream.on('error', (error) => {
   console.log('Error in recognizeStream: ', error);
 });
 
+
+recognizeStream.on('close', (error) => {
+  console.log('Closed recognizeStream');
+});
+
+module.exports.createRecognizeStream = createRecognizeStream;
 module.exports.speechStream = speechStream;
 module.exports.transcribe = transcribe;
