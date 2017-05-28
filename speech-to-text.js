@@ -7,8 +7,9 @@ const stream = require('stream');
 // Configuration module
 const config = require('./config');
 
-var recognizeStream;
 var speechStream = new stream.PassThrough();
+var recognizeStream;
+var outputStream = fs.createWriteStream('./transcription.txt');
 
 const speechToTextService = new stt({
   username: config.speechToTextUsername,
@@ -47,14 +48,10 @@ var createRecognizeStream = () => {
 
 var transcribe = () => {
   console.log('Entered transcribe');
-  let outputStream = fs.createWriteStream('./transcription.txt');
-  console.log('Set up an outputStream');
   speechStream
   .pipe(recognizeStream)
   .pipe(outputStream);
   console.log('Piped speechStream to recognizeStream to outputStream');
-  outputStream.end();
-  console.log('outputStream ended');
 }
 
 speechStream.on('data', (data) => {
