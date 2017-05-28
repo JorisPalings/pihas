@@ -32,6 +32,14 @@ var createRecognizeStream = () => {
   recognizeStream = speechToTextService.createRecognizeStream(speechToTextParameters);
   console.log('Initialized recognizeStream');
 
+  console.log('Testing recognizeStream');
+  speechToTextService.getModel(params, (error, model) => {
+  if(error)
+    console.log('Error: ', error);
+  else
+    console.log(JSON.stringify(model, null, 2));
+  });
+
   recognizeStream.on('data', (data) => {
     console.log('Data left recognizeStream');
   });
