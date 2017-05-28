@@ -59,6 +59,7 @@ var transcribe = () => {
 
 speechStream.on('data', (data) => {
   console.log('Data entered speechStream');
+  console.log(data);
   transcribe();
 });
 
