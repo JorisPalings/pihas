@@ -53,6 +53,8 @@ var transcribe = () => {
   .pipe(recognizeStream)
   .pipe(outputStream);
   console.log('Piped speechStream to recognizeStream to outputStream');
+  outputStream.end();
+  console.log('outputStream ended');
 }
 
 speechStream.on('data', (data) => {
