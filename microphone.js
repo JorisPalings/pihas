@@ -74,9 +74,8 @@ var switchOutputStream = (destination) => {
   micInputStream.pause();
   console.log('Microphone input stream paused');
   micInputStream.unpipe();
-  console.log('Set up a recognizeStream');
-  speechToText.createRecognizeStream();
   console.log('Microphone input stream detached from hotword detector');
+  speechToText.createRecognizeStream();
   micInputStream.pipe(destination);
   console.log('Microphone input stream attached to Speech-to-Text');
   micInputStream.resume();

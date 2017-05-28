@@ -47,9 +47,12 @@ var createRecognizeStream = () => {
 
 var transcribe = () => {
   console.log('Entered transcribe');
+  let outputStream = fs.createWriteStream('./transcription.txt');
+  console.log('Set up an outputStream');
   speechStream
   .pipe(recognizeStream)
-  .pipe(fs.createWriteStream('./transcription.txt'));
+  .pipe(outputStream);
+  console.log('Piped speechStream to recognizeStream to outputStream');
 }
 
 speechStream.on('data', (data) => {
